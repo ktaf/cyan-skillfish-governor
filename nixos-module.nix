@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ self, config, lib, pkgs, ... }:
 let
   cfg = config.services.cyan-skillfish-governor;
   renderedConfig = pkgs.writeText "cyan-skillfish-governor.toml" cfg.configText;
@@ -9,7 +9,7 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.cyan-skillfish-governor;
+      default = self.packages.${pkgs.system}.default;
     };
 
     configText = lib.mkOption {

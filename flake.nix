@@ -52,6 +52,6 @@
         });
     in
       perSystem // {
-        nixosModules.default = import ./nixos-module.nix;
+        nixosModules.default = import ./nixos-module.nix { inherit self; };
       };
 }
